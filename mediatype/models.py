@@ -1,13 +1,5 @@
 from dataclasses import dataclass, field
-from typing import ClassVar, Mapping, MutableMapping, Optional
-
-"""
-from neoclient import MediaType
-
-MediaType.APPLICATION_JSON
-
-from neoclient.mediatype import MediaType, APPLICATION_JSON
-"""
+from typing import Mapping
 
 __all__ = ("MediaType",)
 
@@ -15,8 +7,7 @@ __all__ = ("MediaType",)
 @dataclass
 class MediaType:
     type: str
-    subtype: str # NOTE: Can contain a prefix (aka "tree") and a suffix
-    # suffix: Optional[str] = None # TODO: Keep me?
+    subtype: str
     parameters: Mapping[str, str] = field(default_factory=dict)
 
     def __repr__(self) -> str:
@@ -25,12 +16,11 @@ class MediaType:
     def __str__(self) -> str:
         return self.string()
 
-    def string(self, suffix: bool = True, parameters: bool = True) -> str:
+    def string(self, *, parameters: bool = True) -> str:
         return "".join(
             (
                 f"{self.type}/",
                 f"{self.subtype}",
-                # f"+{self.suffix}" if suffix and self.suffix else "",
                 "; " if parameters and self.parameters else "",
                 "; ".join(f'{key}="{value}"' for key, value in self.parameters.items())
                 if parameters and self.parameters
@@ -38,5 +28,9 @@ class MediaType:
             ),
         )
     
-    def sort(self):
-        raise NotImplementedError # TODO
+    def sort(self) -> "MediaType":
+        return MediaType(
+            type=self.type,
+            subtype=self.subtype,
+            parameters=dict(sorted(self.parameters.items())),
+        )
