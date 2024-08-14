@@ -1,5 +1,5 @@
-from .parsers import Parser
-from .enums import MediaTypeType, MediaTypeSubtype, MediaTypeSuffix
+# from .enums import MediaTypeSubtype, MediaTypeSuffix, MediaTypeType
 from .models import MediaType
+# from .parsers import Parser
 
-parse = Parser.parse
+# parse = Parser.parse

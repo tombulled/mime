@@ -1,5 +1,6 @@
-import enumb
 import typing
+
+import enumb
 
 __all__: typing.List[str] = ["MediaTypeType", "MediaTypeSubtype", "MediaTypeSuffix"]
 

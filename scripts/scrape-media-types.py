@@ -1,12 +1,13 @@
-import requests
-import xmltodict
-import addict
-import parse
 import enum
-import pydantic
 import json
 import typing
 from pprint import pprint as pp
+
+import addict
+import parse
+import pydantic
+import requests
+import xmltodict
 
 
 def fetch():
