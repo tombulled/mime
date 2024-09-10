@@ -1,7 +1,6 @@
 import enumb
-import typing
 
-__all__: typing.List[str] = ["MediaTypeType", "MediaTypeSubtype", "MediaTypeSuffix"]
+__all__ = ("MediaTypeType", "MediaTypeSubtype", "MediaTypeSuffix")
 
 
 class KebabEnum(enumb.Kebab):

@@ -2,8 +2,9 @@ import typing
 
 from . import enums, models
 
+__all__ = ("MediaTypeParser",)
 
-class Parser:
+class MediaTypeParser:
     @staticmethod
     def _parse_parameter(parameter: str) -> typing.Dict[str, str]:
         parameters: typing.Dict[str, str] = {}
